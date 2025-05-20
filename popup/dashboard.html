@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunaryum Wallet Dashboard</title>
+  <link rel="stylesheet" href="styles/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="sunaryum-dashboard">
+    <!-- Header -->
+    <header class="wallet-header">
+      <div class="wallet-info">
+        <div class="wallet-logo">
+          <i class="fas fa-bolt"></i>
+          <span>Sunaryum Wallet</span>
+        </div>
+        <button class="btn-logout" id="logoutBtn">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </div>
+      <div class="wallet-address">
+        <span id="walletAddress">Carregando...</span>
+        <button class="btn-copy" id="copyAddressBtn">
+          <i class="far fa-copy"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Balance Card -->
+    <div class="balance-card">
+      <div class="balance-header">
+        <span>Seu Saldo</span>
+        <i class="fas fa-sync-alt" id="refreshBalance"></i>
+      </div>
+      <div class="balance-amount">
+        <span class="amount" id="balanceAmount">0.00</span>
+        <span class="currency">SUN</span>
+      </div>
+      <div class="balance-fiat" id="balanceFiat">
+        ≈ R$ 0.00
+      </div>
+      <div class="balance-actions">
+        <button class="btn-send" id="sendBtn">
+          <i class="fas fa-paper-plane"></i> Enviar
+        </button>
+      </div>
+    </div>
+
+    <!-- Transaction History -->
+    <div class="transaction-section">
+      <div class="section-header">
+        <h3><i class="fas fa-history"></i> Histórico de Transações</h3>
+        <button class="btn-view-all" id="viewAllBtn">Ver Tudo</button>
+      </div>
+      
+      <div class="transaction-list" id="transactionList">
+        <!-- As transações serão carregadas dinamicamente via JavaScript -->
+        <div class="empty-state">
+          <i class="fas fa-exchange-alt"></i>
+          <p>Nenhuma transação encontrada</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="wallet-nav">
+      <button class="nav-item active" data-page="dashboard">
+        <i class="fas fa-home"></i>
+        <span>Início</span>
+      </button>
+      <button class="nav-item" data-page="transactions">
+        <i class="fas fa-exchange-alt"></i>
+        <span>Transações</span>
+      </button>
+      <button class="nav-item" data-page="settings">
+        <i class="fas fa-cog"></i>
+        <span>Config</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Modal de Envio -->
+  <div class="modal" id="sendModal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h3>Enviar SUN</h3>
+      <form id="sendForm">
+        <div class="form-group">
+          <label>Endereço de destino</label>
+          <input type="text" id="recipientAddress" placeholder="0x..." required>
+        </div>
+        <div class="form-group">
+          <label>Quantidade (SUN)</label>
+          <input type="number" id="sendAmount" step="0.01" min="0" required>
+        </div>
+        <button type="submit" class="btn-confirm-send">Confirmar Envio</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="scripts/dashboard.js"></script>
+</body>
+</html>

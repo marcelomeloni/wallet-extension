@@ -1,0 +1,253 @@
+:root {
+  /* Sunaryum Color Palette */
+  --solar-orange: #FF7A45;
+  --energy-yellow: #FFC107;
+  --deep-blue: #0A2463;
+  --clean-white: #FFFFFF;
+  --light-gray: #F5F7FA;
+  --dark-gray: #2E3A4D;
+  --success-green: #4CAF50;
+  
+  /* Energy Gradients */
+  --solar-gradient: linear-gradient(135deg, #FF7A45 0%, #FFC107 100%);
+  --energy-pulse: 0 0 15px rgba(255, 193, 7, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 400px;
+  height: 600px;
+  min-width: 300px;
+  overflow: auto;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--light-gray);
+  color: var(--dark-gray);
+  padding: 20px;
+}
+
+.sunaryum-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 20px;
+}
+
+.sunaryum-header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.sunaryum-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.sunaryum-logo i {
+  font-size: 28px;
+  color: var(--energy-yellow);
+  background: var(--deep-blue);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--energy-pulse);
+}
+
+.sunaryum-logo h1 {
+  color: var(--deep-blue);
+  font-weight: 700;
+  font-size: 28px;
+  margin: 0;
+}
+
+.sunaryum-tagline {
+  color: var(--solar-orange);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.sunaryum-card {
+  background: var(--clean-white);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sunaryum-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.energy-card {
+  border-top: 4px solid var(--energy-yellow);
+}
+
+.import-card {
+  border-top: 4px solid var(--deep-blue);
+}
+
+.card-icon {
+  font-size: 32px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+}
+
+.energy-card .card-icon {
+  background: rgba(255, 193, 7, 0.1);
+  color: var(--energy-yellow);
+}
+
+.import-card .card-icon {
+  background: rgba(10, 36, 99, 0.1);
+  color: var(--deep-blue);
+}
+
+.sunaryum-card h2 {
+  color: var(--deep-blue);
+  text-align: center;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.sunaryum-card p {
+  color: var(--dark-gray);
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.sunaryum-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.primary-btn {
+  background: var(--solar-gradient);
+  color: var(--clean-white);
+}
+
+.primary-btn:hover {
+  box-shadow: 0 5px 15px rgba(255, 122, 69, 0.4);
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+  background: var(--deep-blue);
+  color: var(--clean-white);
+}
+
+.secondary-btn:hover {
+  background: #0d2e7a;
+  box-shadow: 0 5px 15px rgba(10, 36, 99, 0.3);
+  transform: translateY(-2px);
+}
+
+.sunaryum-footer {
+  margin-top: auto;
+  text-align: center;
+  font-size: 12px;
+  color: var(--dark-gray);
+  opacity: 0.7;
+}
+
+.energy-bars {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+  height: 20px;
+  align-items: flex-end;
+}
+
+.energy-bars .bar {
+  width: 6px;
+  background: var(--solar-gradient);
+  border-radius: 3px;
+  animation: energy-flow 1.5s infinite ease-in-out;
+}
+
+.energy-bars .bar:nth-child(1) {
+  height: 10px;
+  animation-delay: 0.1s;
+}
+.energy-bars .bar:nth-child(2) {
+  height: 15px;
+  animation-delay: 0.3s;
+}
+.energy-bars .bar:nth-child(3) {
+  height: 20px;
+  animation-delay: 0.5s;
+}
+.energy-bars .bar:nth-child(4) {
+  height: 15px;
+  animation-delay: 0.7s;
+}
+
+.energy-pulse {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 40px;
+  height: 40px;
+  background: var(--energy-yellow);
+  border-radius: 50%;
+  filter: blur(10px);
+  opacity: 0.3;
+  animation: pulse 3s infinite;
+}
+
+@keyframes energy-flow {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.7);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+}
