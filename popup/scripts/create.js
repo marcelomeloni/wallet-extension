@@ -36,7 +36,7 @@ async function generateSeedPhrase() {
       Generating...
     `;
 
-    const res = await fetch('http://localhost:5000/wallet/new');
+    const res = await fetch('https://sunaryum.onrender.com/wallet/new');
     if (!res.ok) throw new Error('Server response error');
     
     walletData = await res.json();
