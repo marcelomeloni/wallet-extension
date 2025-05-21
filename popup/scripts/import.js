@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       importStatus.textContent = 'Importing...';
 
       try {
-          const res = await fetch('https://sunaryum.onrender.com', {
+          const res = await fetch('https://sunaryum.onrender.com/wallet/import', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ mnemonic: seed })
