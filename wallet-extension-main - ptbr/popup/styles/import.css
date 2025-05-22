@@ -1,0 +1,38 @@
+.import-wallet-card {
+    padding: 2rem;
+    background: #eeeef7;
+    border-radius: 16px;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+    text-align: center;
+  }
+  
+  #importBtn {
+    margin-top: 1rem;
+    width: 100%;
+  }
+  
+  #importStatus {
+    margin-top: 1rem;
+    color: #ffdd57;
+  }
+  
+  textarea#seedInput {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    border: none;
+    background: #2c2c2e;
+    color: #fff;
+    font-size: 1rem;
+    resize: none;
+    height: 100px;
+    margin-top: 1rem;
+  }
+  .status-message {
+    margin-top: 1rem;
+    color: #ffdd57;
+  }
+  
+  .hidden {
+    display: none;
+  }
