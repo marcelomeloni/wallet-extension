@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunaryum Wallet Settings</title>
+  <link rel="stylesheet" href="styles/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="sunaryum-dashboard">
+    <!-- Header -->
+    <header class="wallet-header">
+      <div class="wallet-info">
+        <div class="wallet-logo">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </div>
+        <button class="btn-logout" onclick="history.back()">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Config Content -->
+    <div class="balance-card">
+      <h3 class="section-header"><i class="fas fa-link"></i> Social Links</h3>
+      <div class="social-links">
+        <a href="https://twitter.com/sunaryum" target="_blank" class="social-item">
+          <i class="fab fa-twitter"></i>
+          <span>Official X (Twitter)</span>
+        </a>
+        <a href="https://instagram.com/netsunaryum" target="_blank" class="social-item">
+          <i class="fab fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+        <a href="https://dapp.sunaryum.com/airdrop" target="_blank" class="social-item">
+          <i class="fas fa-gift"></i>
+          <span>Airdrop DApp</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- App Settings -->
+    <div class="balance-card">
+      <h3 class="section-header"><i class="fas fa-sliders-h"></i> App Settings</h3>
+      <div class="setting-item">
+        <span>Dark Mode</span>
+        <label class="switch">
+          <input type="checkbox" id="darkModeToggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="setting-item">
+        <span>Currency</span>
+        <select class="currency-select" id="currencySelect">
+          <option value="SUN">SUN</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Security -->
+    <div class="balance-card">
+      <button class="btn-send" style="background: var(--error)" onclick="logout()">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="wallet-nav">
+      <button class="nav-item" data-page="dashboard">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </button>
+      <button class="nav-item" data-page="transactions">
+        <i class="fas fa-exchange-alt"></i>
+        <span>Transactions</span>
+      </button>
+      <button class="nav-item active" data-page="settings">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Add these styles at the end of your CSS file -->
+  <style>
+    .social-links {display: flex;flex-direction: column;gap: 12px;}
+    .social-item {display: flex;align-items: center;gap: 12px;padding: 12px;border-radius: 12px;color: var(--text);text-decoration: none;transition: all 0.2s;}
+    .social-item:hover {background: rgba(10, 36, 99, 0.05);transform: translateY(-2px);}
+    .social-item i {font-size: 20px;width: 30px;}
+    .setting-item {display: flex;justify-content: space-between;align-items: center;padding: 12px 0;}
+    .switch {position: relative;display: inline-block;width: 48px;height: 24px;}
+    .switch input {opacity: 0;width: 0;height: 0;}
+    .slider {position: absolute;cursor: pointer;top: 0;left: 0;right: 0;bottom: 0;background: #ccc;transition: .4s;border-radius: 34px;}
+    .slider:before {position: absolute;content: "";height: 18px;width: 18px;left: 3px;bottom: 3px;background: white;transition: .4s;border-radius: 50%;}
+    input:checked + .slider {background: var(--primary);}
+    input:checked + .slider:before {transform: translateX(24px);}
+    .currency-select {padding: 8px;border-radius: 8px;border: 1px solid rgba(0,0,0,0.1);background: var(--card-bg);color: var(--text);}
+  </style>
+
+  <script src="scripts/settings.js">
+  </script>
+</body>
+</html>

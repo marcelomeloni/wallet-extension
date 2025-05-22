@@ -1,9 +1,9 @@
-API_BASE = 'https://sunaryum.onrender.com';
+const API_BASE = 'https://sunaryum.onrender.com';
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('[DEBUG] Transactions page loaded');
 
-  // Elementos da UI
+  // UI Elements
   const walletAddressEl = document.getElementById('walletAddress');
   const copyAddressBtn = document.getElementById('copyAddressBtn');
   const logoutBtn = document.getElementById('logoutBtn');
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Helpers
   function formatDateTime(dateString) {
     const d = new Date(dateString);
-    return d.toLocaleString('pt-BR');
+    return d.toLocaleString('en-US');
   }
 
   function shortenAddress(addr, chars = 4) {
@@ -29,48 +29,48 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!type) return 'pending';
     if (type.includes('confirmed')) return 'confirmed';
     if (type.includes('pending')) return 'pending';
-    return 'confirmed'; // padrão se não especificado
+    return 'confirmed'; // default if not specified
   }
 
-  // Verifica autenticação e exibe endereço
+  // Check authentication and display address
   let address;
   try {
     const raw = localStorage.getItem('walletData');
     const walletData = raw && JSON.parse(raw);
     if (!walletData || !walletData.address) {
-      throw new Error('Carteira não encontrada');
+      throw new Error('Wallet not found');
     }
     address = walletData.address;
     walletAddressEl.textContent = shortenAddress(address);
-    console.log('[DEBUG] Endereço da carteira:', address);
+    console.log('[DEBUG] Wallet address:', address);
   } catch (e) {
-    alert('Usuário não autenticado. Redirecionando para login...');
+    alert('User not authenticated. Redirecting to login...');
     window.location.href = 'import.html';
     return;
   }
 
-  // Busca e renderiza todas as transações
+  // Fetch and render all transactions
   async function loadTransactions(filter = 'all') {
     try {
-      console.log(`[DEBUG] Buscando transações para ${address}, filtro=${filter}`);
+      console.log(`[DEBUG] Fetching transactions for ${address}, filter=${filter}`);
       const res = await fetch(`${API_BASE}/wallet/transactions/${address}`, { cache: 'no-store' });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const { transactions } = await res.json();
       renderTransactions(transactions || [], filter);
     } catch (err) {
-      console.error('[ERRO] loadTransactions:', err);
+      console.error('[ERROR] loadTransactions:', err);
       fullTransactionList.innerHTML = 
         `<div class="empty-state error">
           <i class="fas fa-exclamation-triangle"></i>
-          <p>Erro ao carregar transações</p>
+          <p>Error loading transactions</p>
           <small>${err.message}</small>
         </div>`;
     }
   }
 
-  // Renderiza todas as transações (sem limite)
+  // Render all transactions (no limit)
   function renderTransactions(transactions, filter) {
-    console.log(`[DEBUG] Renderizando ${transactions.length} txs, filtro=${filter}`);
+    console.log(`[DEBUG] Rendering ${transactions.length} txs, filter=${filter}`);
     fullTransactionList.innerHTML = '';
 
     const list = transactions
@@ -87,10 +87,11 @@ document.addEventListener('DOMContentLoaded', () => {
       .filter(tx => filter === 'all' || tx.baseType === filter);
 
     if (list.length === 0) {
+      const filterLabel = filter === 'all' ? '' : filter === 'received' ? 'received' : 'sent';
       fullTransactionList.innerHTML = 
         `<div class="empty-state">
           <i class="fas fa-exchange-alt"></i>
-          <p>Nenhuma transação ${filter === 'all' ? '' : filter === 'received' ? 'recebida' : 'enviada'} encontrada</p>
+          <p>No ${filterLabel ? filterLabel + ' ' : ''}transactions found</p>
         </div>`;
       return;
     }
@@ -100,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const dateFmt = tx.date ? formatDateTime(tx.date) : '—';
       const amountFmt = (isReceived ? '+' : '-') + parseFloat(tx.amount).toFixed(4);
       const iconDir = isReceived ? 'down' : 'up';
-      const label = isReceived ? 'Recebido' : 'Enviado';
+      const label = isReceived ? 'Received' : 'Sent';
       const statusText = tx.status === 'pending' ? 'Pending' : 'Confirmed';
       const statusClass = tx.status === 'pending' ? 'pending' : 'confirmed';
 
@@ -152,12 +153,12 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   );
   
-  // Marca o item de navegação ativo
+  // Highlight active navigation item
   navItems.forEach(i =>
     i.dataset.page === 'transactions' ? i.classList.add('active') : i.classList.remove('active')
   );
 
-  // Carrega tudo
+  // Load everything
   loadTransactions();
-  console.log('[DEBUG] Página de transações inicializada');
+  console.log('[DEBUG] Transactions page initialized');
 });

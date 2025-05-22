@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "Blockchain Wallet",
+    "name": "Sunaryum",
     "version": "1.0",
-    "description": "Secure cryptocurrency wallet extension",
+    "description": "Open source Sunaryum wallet extension",
     "icons": {
       "48": "icons/icon48.png",
       "96": "icons/icon96.png",

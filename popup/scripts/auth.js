@@ -14,5 +14,5 @@ export function getWalletData() {
 
 export function logout() {
     localStorage.removeItem('walletData');
-    window.location.href = 'import.html';
+    window.location.href = 'main.html';
 }
