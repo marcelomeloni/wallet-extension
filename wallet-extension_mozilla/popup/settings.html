@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunaryum Wallet Settings</title>
+  <link rel="stylesheet" href="styles/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <div class="sunaryum-dashboard">
+    <!-- Header -->
+    <header class="wallet-header">
+      <div class="wallet-info">
+        <div class="wallet-logo">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </div>
+        <button class="btn-logout" id="backButton">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Config Content -->
+    <div class="balance-card">
+      <h3 class="section-header"><i class="fas fa-link"></i> Social Links</h3>
+      <div class="social-links">
+        <a href="https://twitter.com/sunaryum" target="_blank" class="social-item">
+          <i class="fab fa-twitter"></i>
+          <span>Official X (Twitter)</span>
+        </a>
+        <a href="https://instagram.com/netsunaryum" target="_blank" class="social-item">
+          <i class="fab fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+        <a href="https://dapp.sunaryum.com/airdrop" target="_blank" class="social-item">
+          <i class="fas fa-gift"></i>
+          <span>Airdrop DApp</span>
+        </a>
+      </div>
+    </div>
+    <div class="wallet-info-container">
+      <div class="wallet-info-item">
+        <span class="info-label">Public Key:</span>
+        <div class="publickey-wrapper">
+          <span id="publicKeyValue" class="publickey-value">Loading...</span>
+          <button class="copy-publickey-btn" id="copyPublicKeyBtn">
+            <i class="fas fa-copy"></i>
+          </button>
+        </div>
+      </div>
+      
+      
+  </div>
+    <!-- App Settings -->
+    <div class="balance-card">
+      <h3 class="section-header"><i class="fas fa-sliders-h"></i> App Settings</h3>
+      <div class="setting-item">
+        <span>Dark Mode</span>
+        <label class="switch">
+          <input type="checkbox" id="darkModeToggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="setting-item">
+        <span>Currency</span>
+        <select class="currency-select" id="currencySelect">
+          <option value="SUN">SUN</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Security -->
+    <div class="balance-card">
+      <button class="btn-send" style="background: var(--error)" id="logoutBtn">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="wallet-nav">
+      <button class="nav-item" data-page="dashboard">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </button>
+      <button class="nav-item" data-page="transactions">
+        <i class="fas fa-exchange-alt"></i>
+        <span>Transactions</span>
+      </button>
+      <button class="nav-item active" data-page="settings">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </button>
+    </nav>
+  </div>
+
+
+  <script src="scripts/settings.js">
+  </script>
+</body>
+</html>
